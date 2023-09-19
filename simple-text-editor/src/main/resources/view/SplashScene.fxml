@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" onMouseDragged="#onMouseMoved" onMousePressed="#onMouseClick" prefHeight="178.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.SplashSceneController">
+   <children>
+      <ImageView fitHeight="254.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/img/writenow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="43.0" layoutX="162.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/gif/load.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
