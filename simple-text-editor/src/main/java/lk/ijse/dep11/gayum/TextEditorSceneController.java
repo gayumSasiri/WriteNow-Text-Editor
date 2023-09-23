@@ -17,6 +17,7 @@ public class TextEditorSceneController {
     public MenuItem mbFileNew;
     public MenuItem mbFileExit;
     public MenuItem mbHelpUserGuid;
+    public MenuItem mbHelpAboutUs;
 
     public void mbFileNewOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane newTextEditorScene = FXMLLoader.load(getClass().getResource("/view/TextEditorScene.fxml"));
@@ -41,11 +42,26 @@ public class TextEditorSceneController {
 
         userGuidStage.initModality(Modality.WINDOW_MODAL);
         userGuidStage.initOwner(textEditorRoot.getScene().getWindow());
-        
+
         userGuidStage.setScene(userGuidScene);
         userGuidStage.setTitle("User Guide");
         userGuidStage.setResizable(false);
         userGuidStage.centerOnScreen();
         userGuidStage.show();
+    }
+
+    public void mbHelpAboutUsOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/AboutUsScene.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(textEditorRoot.getScene().getWindow());
+
+        stage.setScene(scene);
+        stage.setTitle("About Us");
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        stage.show();
     }
 }
