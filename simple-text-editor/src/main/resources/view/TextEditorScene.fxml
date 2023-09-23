@@ -9,18 +9,18 @@
 
 <AnchorPane fx:id="textEditorRoot" prefHeight="672.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.TextEditorSceneController">
    <children>
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="568.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <VBox layoutX="14.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <MenuBar>
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="New" />
+                    <MenuItem fx:id="mbFileNew" mnemonicParsing="false" onAction="#mbFileNewOnAction" text="New" />
                         <MenuItem mnemonicParsing="false" text="Open" />
                         <MenuItem mnemonicParsing="false" text="Save" />
                         <MenuItem mnemonicParsing="false" text="Save as" />
                         <MenuItem mnemonicParsing="false" text="Print" />
-                        <MenuItem mnemonicParsing="false" text="Exit" />
+                        <MenuItem fx:id="mbFileExit" mnemonicParsing="false" onAction="#mbFileExitOnAction" text="Exit" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -33,13 +33,13 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="UserGuid" />
+                    <MenuItem fx:id="mbHelpUserGuid" mnemonicParsing="false" onAction="#mbHelpUserGuidOnAction" text="UserGuid" />
                         <MenuItem mnemonicParsing="false" text="AboutUs" />
                   </items>
                 </Menu>
               </menus>
             </MenuBar>
-            <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="657.0" prefWidth="887.0" />
+            <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" />
          </children>
       </VBox>
    </children>

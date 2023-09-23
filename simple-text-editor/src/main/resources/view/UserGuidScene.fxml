@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="434.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.UserGuidSceneController">
+   <children>
+      <Label alignment="CENTER" layoutX="267.0" layoutY="34.0" text="WriteNow Text Editor App User Guide" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutX="35.0" layoutY="66.0" prefHeight="200.0" prefWidth="200.0" text="Welcome to the Text Editor App! &#10;&#10;This user guide will help you get started and use the essential features of the application.&#10;&#10;1. Getting Started&#10;     1.1 Installation&#10;         1.1.2 Ensure you have installed the Text Editor App on your &#10;               computer as per the installation instructions provided.&#10;     1.2 Opening the App&#10;         1.2.1 Launch the Text Editor App from your computer's applications menu.&#10;     &#10;2. File Menu&#10;     2.1 Creating a New Document&#10;         2.1.1 Click on &quot;File.&quot;&#10;         2.1.2 Select &quot;New&quot; to create a new, blank document.&#10;     2.2 Opening Existing Documents&#10;&#9; 2.2.1 Click on &quot;File.&quot;&#10;&#9; 2.2.2 Select &quot;Open&quot; or &quot;Open File.&quot;&#10;&#9; 2.2.3 Navigate to the location of the document you want to open.&#10;&#9; 2.2.4Click on the file and select &quot;Open.&quot; &#10;     2.3 Saving Documents&#10;         2.3.1 Click on &quot;File.&quot;&#10;         2.3.2 Select &quot;Save&quot; to save the current document.    &#10;     2.4 Save As&#10;&#9; 2.4.1 Click on &quot;File.&quot;&#10;&#9; 2.4.2 Select &quot;Save As&quot; to save the document with a new name or in a different location.&#10;     2.5 Printing Documents&#10;&#9; 2.5.1 Click on &quot;File.&quot;&#10;&#9; 2.5.2 Select &quot;Print&quot; to print a hard copy of your document.&#10;     2.6 Exiting the App&#10;&#9; 2.6.1 To exit the Text Editor App, click on &quot;File&quot; and select &quot;Exit&quot;.&#10;&#9; &#10;3. Edit Menu&#10;     3.1 Cut, Copy, and Paste&#10;&#9; 3.1.1 Use keyboard shortcuts or the menu options to cut (Ctrl+X), &#10;               copy (Ctrl+C), and paste (Ctrl+V) text within the document.&#10;     3.2 Select All&#10;&#9; 3.2.1 Click on &quot;Edit.&quot;&#10;&#9;       Select &quot;Select All&quot; to highlight all the text in the document.&#10;&#9;       &#10;4. Help Menu&#10;     4.1 User Guide&#10;&#9; 4.1.1 Click on &quot;Help.&quot;&#10;&#9;       Select &quot;User Guide&quot; to access this user guide for assistance.&#10;     4.2 About Us&#10;&#9; 4.2.1 Click on &quot;Help.&quot;&#10;&#9;       Select &quot;About Us&quot; to learn more about the WriteNow Text Editor App and its developers." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="55.0" />
+   </children>
+</AnchorPane>
