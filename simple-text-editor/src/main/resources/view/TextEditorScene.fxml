@@ -16,7 +16,7 @@
                 <Menu mnemonicParsing="false" text="File">
                   <items>
                     <MenuItem fx:id="mbFileNew" mnemonicParsing="false" onAction="#mbFileNewOnAction" text="New" />
-                        <MenuItem mnemonicParsing="false" text="Open" />
+                        <MenuItem fx:id="mbFileOpen" mnemonicParsing="false" onAction="#mbFileOpenOnAction" text="Open" />
                         <MenuItem mnemonicParsing="false" text="Save" />
                         <MenuItem mnemonicParsing="false" text="Save as" />
                         <MenuItem mnemonicParsing="false" text="Print" />
@@ -39,7 +39,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" />
+            <HTMLEditor fx:id="txtHtml" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

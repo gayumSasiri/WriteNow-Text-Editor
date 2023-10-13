@@ -5,11 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.scene.web.HTMLEditor;
+import javafx.stage.*;
 
-import java.io.IOException;
+import java.io.*;
 
 public class TextEditorSceneController {
 
@@ -18,6 +17,8 @@ public class TextEditorSceneController {
     public MenuItem mbFileExit;
     public MenuItem mbHelpUserGuid;
     public MenuItem mbHelpAboutUs;
+    public MenuItem mbFileOpen;
+    public HTMLEditor txtHtml;
 
     public void mbFileNewOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane newTextEditorScene = FXMLLoader.load(getClass().getResource("/view/TextEditorScene.fxml"));
@@ -63,5 +64,34 @@ public class TextEditorSceneController {
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
+    }
+
+    public void mbFileOpenOnAction(ActionEvent actionEvent) throws IOException {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select text file for open");
+        File file = fileChooser.showOpenDialog(textEditorRoot.getScene().getWindow());
+
+        if (file == null) return;
+        else {
+            String fileName = file.getName();
+            ((Stage)(textEditorRoot.getScene().getWindow())).setTitle(fileName);
+
+            try(var fis = new FileReader(file);
+                var bis = new BufferedReader(fis)){
+
+                String line = null;
+                String content = "";
+                int i = 0;
+                while ((line = bis.readLine()) != null) {
+                    line = line.replace("\t", "&emsp;");
+                    content += line + "<br>";
+                }
+                txtHtml.setHtmlText(content);
+
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 }
