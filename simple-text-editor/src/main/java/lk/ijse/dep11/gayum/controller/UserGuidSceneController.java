@@ -1,4 +1,4 @@
-package lk.ijse.dep11.gayum;
+package lk.ijse.dep11.gayum.controller;
 
 import javafx.scene.layout.AnchorPane;
 

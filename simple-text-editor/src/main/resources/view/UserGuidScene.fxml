@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="root" prefHeight="434.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.UserGuidSceneController">
+<AnchorPane fx:id="root" prefHeight="434.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.controller.UserGuidSceneController">
    <children>
       <Label alignment="CENTER" layoutX="267.0" layoutY="34.0" text="WriteNow Text Editor App User Guide" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>

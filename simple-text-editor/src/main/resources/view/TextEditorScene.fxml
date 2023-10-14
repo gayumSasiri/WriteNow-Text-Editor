@@ -7,26 +7,26 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="textEditorRoot" prefHeight="785.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.TextEditorSceneController">
+<AnchorPane fx:id="textEditorRoot" onDragDropped="#textEditorRootOnDragDropped" onDragOver="#textEditorRootOnDragOver" prefHeight="785.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.controller.TextEditorSceneController">
    <children>
       <MenuBar AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="mbFileNew" mnemonicParsing="false" onAction="#mbFileNewOnAction" text="New (Ctrl+N)">
+              <MenuItem fx:id="mbFileNew" mnemonicParsing="false" onAction="#mbFileNewOnAction" text="New">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
-                  <MenuItem fx:id="mbFileOpen" mnemonicParsing="false" onAction="#mbFileOpenOnAction" text="Open (Ctrl+O)">
+                  <MenuItem fx:id="mbFileOpen" mnemonicParsing="false" onAction="#mbFileOpenOnAction" text="Open">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Save (Ctrl+S)">
+                  <MenuItem fx:id="mbSave" mnemonicParsing="false" onAction="#mbSaveOnAction" text="Save">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                   <MenuItem fx:id="mbFileSaveAs" mnemonicParsing="false" onAction="#mbFileSaveAs" text="Save as" />
-                  <MenuItem fx:id="mbFilePrint" mnemonicParsing="false" onAction="#mbFilePrintOnAction" text="Print (Ctrl+P)">
+                  <MenuItem fx:id="mbFilePrint" mnemonicParsing="false" onAction="#mbFilePrintOnAction" text="Print">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
@@ -35,10 +35,22 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
+              <MenuItem fx:id="mbEditCut" mnemonicParsing="false" onAction="#mbEditCutOnAction" text="Cut">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="mbEditCopy" mnemonicParsing="false" onAction="#mbEditCopyOnAction" text="Copy">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="mbEditPaste" mnemonicParsing="false" onAction="#mbEditPasteOnAction" text="Paste">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="mbEditSelectAll" mnemonicParsing="false" onAction="#mbEditSelectAllOnAction" text="Select All">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

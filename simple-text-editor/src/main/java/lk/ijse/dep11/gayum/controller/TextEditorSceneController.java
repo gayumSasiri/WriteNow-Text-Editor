@@ -1,4 +1,4 @@
-package lk.ijse.dep11.gayum;
+package lk.ijse.dep11.gayum.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.*;
@@ -28,6 +29,17 @@ public class TextEditorSceneController {
     public TextArea txtArea;
     public MenuItem mbFileSaveAs;
     public MenuItem mbFilePrint;
+    public MenuItem mbSave;
+    public MenuItem mbEditCut;
+    public MenuItem mbEditCopy;
+    public MenuItem mbEditPaste;
+    public MenuItem mbEditSelectAll;
+    private File currentFile;
+    public void initialize(){
+        txtArea.accessibleTextProperty().addListener((val,prev,curr)->{
+
+        });
+    }
 
     public void mbFileNewOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane newTextEditorScene = FXMLLoader.load(getClass().getResource("/view/TextEditorScene.fxml"));
@@ -41,6 +53,11 @@ public class TextEditorSceneController {
     }
 
     public void mbFileExitOnAction(ActionEvent actionEvent) {
+        if(txtArea.getText().isEmpty()){
+            Stage stage = (Stage) textEditorRoot.getScene().getWindow();
+            stage.close();
+            return;
+        }
         Alert conformationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to save file before exit?",
                 ButtonType.NO, ButtonType.CANCEL, ButtonType.YES);
         Optional<ButtonType> buttonType = conformationAlert.showAndWait();
@@ -48,13 +65,13 @@ public class TextEditorSceneController {
             actionEvent.consume();
             return;
         } else if (buttonType.get() == ButtonType.YES) {
-            mbFileSaveAs(actionEvent);
-            return;
+            mbSaveOnAction(actionEvent);
+            Stage stage = (Stage) textEditorRoot.getScene().getWindow();
+            stage.close();
         }else {
             Stage stage = (Stage) textEditorRoot.getScene().getWindow();
             stage.close();
         }
-
     }
 
     public void mbHelpUserGuidOnAction(ActionEvent actionEvent) throws IOException {
@@ -94,24 +111,27 @@ public class TextEditorSceneController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Java Files (*.java)","*.java"));
         fileChooser.setTitle("Select text file for open");
-        File file = fileChooser.showOpenDialog(textEditorRoot.getScene().getWindow());
+        currentFile = fileChooser.showOpenDialog(textEditorRoot.getScene().getWindow());
 
-        if (file == null) return;
+        if (currentFile == null) return;
         else {
-            String fileName = file.getName();
+            String fileName = currentFile.getName();
             ((Stage)(textEditorRoot.getScene().getWindow())).setTitle(fileName);
-            try(var fis = new FileReader(file);
-                var bis = new BufferedReader(fis)){
-                String line = null;
-                String content = "";
-                int i = 0;
-                while ((line = bis.readLine()) != null) {
-                    content += line +"\n" ;
-                }
-                txtArea.setText(content);
-            }catch(IOException e){
-                e.printStackTrace();
+            readFile(currentFile);
+        }
+    }
+
+    private void readFile(File currentFile) {
+        try(var fis = new FileReader(currentFile);
+            var bis = new BufferedReader(fis)){
+            String line = null;
+            String content = "";
+            while ((line = bis.readLine()) != null) {
+                content += line +"\n" ;
             }
+            txtArea.setText(content);
+        }catch(IOException e){
+            e.printStackTrace();
         }
     }
 
@@ -120,13 +140,12 @@ public class TextEditorSceneController {
         fileChooser.setTitle("Save the text file");
         fileChooser.setInitialFileName("Untitled Document.txt");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Text Files (*.txt, *.html)", "*.txt", "*.html"));
-        File file = fileChooser.showSaveDialog(textEditorRoot.getScene().getWindow());
-        if (file == null) return;
+        currentFile = fileChooser.showSaveDialog(textEditorRoot.getScene().getWindow());
+        if (currentFile == null) return;
         try {
-            file.createNewFile();
-            try(var fos = new FileWriter(file);
+            currentFile.createNewFile();
+            try(var fos = new FileWriter(currentFile);
                 var bos = new BufferedWriter(fos)){
-
                 String content = txtArea.getText();
                 bos.write(content);
                 bos.flush();
@@ -134,6 +153,7 @@ public class TextEditorSceneController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void mbFilePrintOnAction(ActionEvent actionEvent) {
@@ -151,5 +171,70 @@ public class TextEditorSceneController {
                 printerJob.endJob();
             }
         }
+    }
+
+    public void mbSaveOnAction(ActionEvent actionEvent) {
+        if (currentFile == null){
+            mbFileSaveAs(actionEvent);
+        }else{
+            try {
+                try(var fos = new FileWriter(currentFile);
+                    var bos = new BufferedWriter(fos)){
+                    String content = txtArea.getText();
+                    bos.write(content);
+                    bos.flush();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void textEditorRootOnDragOver(DragEvent dragEvent) {
+        dragEvent.acceptTransferModes(TransferMode.ANY);
+    }
+
+    public void textEditorRootOnDragDropped(DragEvent dragEvent) {
+        dragEvent.setDropCompleted(true);
+        File droppedFile = dragEvent.getDragboard().getFiles().get(0);
+        readFile(droppedFile);
+    }
+
+    public void mbEditCutOnAction(ActionEvent actionEvent) {
+        String selectedText = txtArea.getSelectedText();
+        if (!selectedText.isEmpty()) {
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            ClipboardContent content = new ClipboardContent();
+            content.putString(selectedText);
+            clipboard.setContent(content);
+            
+            int selectionStart = txtArea.getSelection().getStart();
+            int selectionEnd = txtArea.getSelection().getEnd();
+            txtArea.deleteText(selectionStart, selectionEnd);
+        }
+    }
+
+    public void mbEditCopyOnAction(ActionEvent actionEvent) {
+        String selectedText = txtArea.getSelectedText();
+        if (!selectedText.isEmpty()) {
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            ClipboardContent content = new ClipboardContent();
+            content.putString(selectedText);
+            clipboard.setContent(content);
+        }
+
+    }
+
+    public void mbEditPasteOnAction(ActionEvent actionEvent) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        DataFormat plainText = DataFormat.PLAIN_TEXT;
+        if (clipboard.hasContent(plainText)) {
+            String pastedText = (String) clipboard.getContent(plainText);
+            txtArea.appendText(pastedText);
+        }
+    }
+
+    public void mbEditSelectAllOnAction(ActionEvent actionEvent) {
+        txtArea.selectAll();
     }
 }

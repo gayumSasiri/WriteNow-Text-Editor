@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" onMouseDragged="#onMouseMoved" onMousePressed="#onMouseClick" prefHeight="178.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.SplashSceneController">
+<AnchorPane fx:id="root" onMouseDragged="#onMouseMoved" onMousePressed="#onMouseClick" prefHeight="178.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.controller.SplashSceneController">
    <children>
       <ImageView fitHeight="254.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true">
          <image>
