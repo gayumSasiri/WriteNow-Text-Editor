@@ -27,7 +27,7 @@ To use writeNow Text Editor, follow these steps:
 1. Clone the repository to your local machine:
 
    ```shell
-   git clone https://github.com/yourusername/writeNow-text-editor.git
+   git clone https://github.com/gayumSasiri/WriteNow-Text-Editor.git
 
 ***
 ## License
