@@ -2,6 +2,9 @@ package lk.ijse.dep11.gayum;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PageLayout;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -24,6 +27,7 @@ public class TextEditorSceneController {
     public MenuItem mbFileOpen;
     public TextArea txtArea;
     public MenuItem mbFileSaveAs;
+    public MenuItem mbFilePrint;
 
     public void mbFileNewOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane newTextEditorScene = FXMLLoader.load(getClass().getResource("/view/TextEditorScene.fxml"));
@@ -129,6 +133,23 @@ public class TextEditorSceneController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void mbFilePrintOnAction(ActionEvent actionEvent) {
+        Printer defaultPrinter = Printer.getDefaultPrinter();
+        if (defaultPrinter == null){
+            new Alert(Alert.AlertType.ERROR,"No default printer has been configured,Try again!").showAndWait();
+            return;
+        }
+        PrinterJob printerJob = PrinterJob.createPrinterJob();
+        if (printerJob.showPrintDialog(textEditorRoot.getScene().getWindow())){
+            PageLayout pageLayout = printerJob.getJobSettings().getPageLayout();
+            printerJob.getJobSettings().setPageLayout(pageLayout);
+            boolean success = printerJob.printPage(textEditorRoot);
+            if (success){
+                printerJob.endJob();
+            }
         }
     }
 }

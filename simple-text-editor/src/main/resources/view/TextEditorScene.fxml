@@ -26,7 +26,7 @@
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
                   <MenuItem fx:id="mbFileSaveAs" mnemonicParsing="false" onAction="#mbFileSaveAs" text="Save as" />
-                  <MenuItem mnemonicParsing="false" text="Print (Ctrl+P)">
+                  <MenuItem fx:id="mbFilePrint" mnemonicParsing="false" onAction="#mbFilePrintOnAction" text="Print (Ctrl+P)">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
