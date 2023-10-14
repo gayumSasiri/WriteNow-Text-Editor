@@ -7,11 +7,11 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="textEditorRoot" onDragDropped="#textEditorRootOnDragDropped" onDragOver="#textEditorRootOnDragOver" prefHeight="785.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.controller.TextEditorSceneController">
+<AnchorPane fx:id="textEditorRoot" onDragDropped="#textEditorRootOnDragDropped" onDragOver="#textEditorRootOnDragOver" prefHeight="670.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.gayum.controller.TextEditorSceneController">
    <children>
       <MenuBar AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="file" mnemonicParsing="false" text="File">
             <items>
               <MenuItem fx:id="mbFileNew" mnemonicParsing="false" onAction="#mbFileNewOnAction" text="New">
                      <accelerator>
@@ -33,7 +33,7 @@
                   <MenuItem fx:id="mbFileExit" mnemonicParsing="false" onAction="#mbFileExitOnAction" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu fx:id="edit" mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem fx:id="mbEditCut" mnemonicParsing="false" onAction="#mbEditCutOnAction" text="Cut">
                      <accelerator>
@@ -53,7 +53,7 @@
                      </accelerator></MenuItem>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="help" mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="mbHelpUserGuid" mnemonicParsing="false" onAction="#mbHelpUserGuidOnAction" text="UserGuid" />
                   <MenuItem fx:id="mbHelpAboutUs" mnemonicParsing="false" onAction="#mbHelpAboutUsOnAction" text="AboutUs" />

@@ -6,10 +6,7 @@ import javafx.print.PageLayout;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
@@ -34,6 +31,9 @@ public class TextEditorSceneController {
     public MenuItem mbEditCopy;
     public MenuItem mbEditPaste;
     public MenuItem mbEditSelectAll;
+    public Menu help;
+    public Menu edit;
+    public Menu file;
     private File currentFile;
     public void initialize(){
         txtArea.accessibleTextProperty().addListener((val,prev,curr)->{
@@ -207,7 +207,7 @@ public class TextEditorSceneController {
             ClipboardContent content = new ClipboardContent();
             content.putString(selectedText);
             clipboard.setContent(content);
-            
+
             int selectionStart = txtArea.getSelection().getStart();
             int selectionEnd = txtArea.getSelection().getEnd();
             txtArea.deleteText(selectionStart, selectionEnd);
